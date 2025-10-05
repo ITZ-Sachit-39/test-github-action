@@ -13,11 +13,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Cache dependencies
-        id: prime-cache-4fb03de   # <-- step ID matches the step you want to reference
+        id: prime-cache-4fb03de   # <-- THIS id is what outputs the cache-hit
         uses: actions/cache@v4
         with:
-          path: ~/.npm          # Example: Node.js npm cache
+          path: ~/.npm
           key: cache-4fb03de
 
       - name: Show cache result
-        run: echo "Cache hit: ${{ steps['prime-cache-4fb03de'].outputs.cache-hit }}"
+        run: echo "Cache hit: ${{ steps.prime-cache-4fb03de.outputs.cache-hit }}"
